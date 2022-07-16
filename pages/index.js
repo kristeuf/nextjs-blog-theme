@@ -19,7 +19,7 @@ export default function Index({ posts, globalData }) {
         </h1>
 
         <div className="w-full ">
-          <div className="flex flex-row">
+          <div className="grid grid-cols-4">
           {posts.map((post) => (
             <div
               key={post.filePath}
