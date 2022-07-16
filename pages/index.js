@@ -18,7 +18,8 @@ export default function Index({ posts, globalData }) {
           {globalData.blogTitle}
         </h1>
 
-        <div className="w-full">
+        <div className="w-full ">
+          <div className="flex flex-row">
           {posts.map((post) => (
             <div
               key={post.filePath}
@@ -45,6 +46,7 @@ export default function Index({ posts, globalData }) {
               </Link>
             </div>
           ))}
+        </div>
         </div>
       </main>
       <Footer copyrightText={globalData.footerText} />
