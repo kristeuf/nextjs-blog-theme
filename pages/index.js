@@ -20,32 +20,26 @@ export default function Index({ posts, globalData }) {
 
         <div className="w-full ">
           <div className="grid grid-cols-4">
-          {posts.map((post) => (
-            <div
-              key={post.filePath}
-              className="md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg bg-white  flex flex-col space-y-4 dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 border-b-0 last:border-b hover:border-b hovered-sibling:border-t-0"
-            >
-              <Link
-                as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/posts/[slug]`}
-              >
-                <a className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-4">
-                  {post.data.date && (
-                    <p className="uppercase mb-3 font-bold opacity-60">
-                      {post.data.date}
-                    </p>
-                  )}
-                  <h2 className="text-2xl md:text-3xl">{post.data.title}</h2>
-                  {post.data.description && (
-                    <p className="mt-3 text-lg opacity-60">
-                      {post.data.description}
-                    </p>
-                  )}
-                  <ArrowIcon className="mt-4" />
-                </a>
-              </Link>
-            </div>
-          ))}
+                {posts.map((post) => (
+        <article key={post.slug} className="mt-12">
+          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+            {format(parseISO(post.date), 'MMMM dd, yyyy')}
+          </p>
+          <h1 className="mb-2 text-xl">
+            <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
+              <a className="text-gray-900 dark:text-white dark:hover:text-blue-400">
+                {post.title}
+              </a>
+            </Link>
+          </h1>
+          <p className="mb-3">{post.description}</p>
+          <p>
+            <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
+              <a>Read More</a>
+            </Link>
+          </p>
+        </article>
+      ))}
         </div>
         </div>
       </main>
